@@ -1,0 +1,26 @@
+---
+- name: install apache2 package
+  yum:
+    name: httpd
+  tags: apache2
+
+- name: copy apache2 conf
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    mode: 0644
+  notify: restart apache2 service
+
+- name: copy apache2 default conf
+  template:
+    src: default.conf.j2
+    dest: /etc/httpd/conf.d/default.conf
+    mode: 0644
+  notify: restart apache2 service
+
+- name: start apache2 service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+  tags: apache2

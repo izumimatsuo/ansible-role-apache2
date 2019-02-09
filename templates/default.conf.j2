@@ -1,0 +1,15 @@
+ServerTokens Prod 
+Header unset "X-Powered-By"
+
+Header always append X-Frame-Options SAMEORIGIN
+Header always set X-XSS-Protection "1; mode=block"
+Header always set X-Content-Type-Options nosniff
+
+TraceEnable Off
+FileETag none
+
+<Directory /var/www/html>
+    AllowOverride All
+    Options -Indexes
+    Require method GET POST
+</Directory>
