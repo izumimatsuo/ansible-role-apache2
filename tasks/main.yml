@@ -10,6 +10,7 @@
     dest: /etc/httpd/conf/httpd.conf
     mode: 0644
   notify: restart apache2 service
+  tags: apache2
 
 - name: copy apache2 default conf
   template:
@@ -17,6 +18,7 @@
     dest: /etc/httpd/conf.d/default.conf
     mode: 0644
   notify: restart apache2 service
+  tags: apache2
 
 - name: start apache2 service
   service:
