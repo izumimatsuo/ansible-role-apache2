@@ -1,7 +1,9 @@
 ---
 - name: install apache2 package
   yum:
-    name: httpd
+    name:
+      - httpd
+      - httpd-devel
   tags: apache2
 
 - name: copy apache2 conf
