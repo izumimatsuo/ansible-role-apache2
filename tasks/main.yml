@@ -6,17 +6,14 @@
       - httpd-devel
   tags: apache2
 
-- name: find conf list
-  find:
-    paths: /etc/httpd/conf.d/
-    patterns: "*.conf"
-  register: conf_list
-
 - name: clean up conf directory
   file:
-    path: "{{ item.path }}"
+    path: "/etc/httpd/conf.d/{{ item }}"
     state: absent
-  with_items: "{{ conf_list.files }}"
+  with_items:
+    - welcome.conf
+    - autoindex.conf
+    - userdir.conf
   tags: apache2
 
 - name: copy apache2 conf
