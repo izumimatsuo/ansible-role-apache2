@@ -36,5 +36,5 @@
   service:
     name: httpd
     state: started
-    enabled: true
+    enabled: yes
   tags: apache2
