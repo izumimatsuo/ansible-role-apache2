@@ -34,15 +34,3 @@ apache2_server_name|localhost   |サーバ名
 %{Referer}i   |リファラー
 %{User-Agent}i|エージェント
 %D            |レスポンス時間、マイクロ秒単位
-
-## ビルド
-
-以下のいづれかで ansible-playbook と testinfra を実行可能。
-
-1) docker-compose でビルド実行
-
-``` $ ./build.sh ```
-
-2) gitlab-runner でビルド実行
-
-``` $ gitlab-runner exec docker --docker-volumes /var/run/docker.sock:/var/run/docker.sock ansible_build ```
